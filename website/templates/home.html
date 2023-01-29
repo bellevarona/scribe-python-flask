@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% block title%}Home{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/home.css')}}">
+{% endblock %}
+
+
+{% block content %}
+<!-- <h1>This is the home page</h1> -->
+
+<h1 align="center" class="mt-2" id="set-day-title"></h1>
+<img src="../static/images/logo3-removebg.png" alt="scribe_logo3">
+
+<!-- <ul class="list-group list-group-flush" id="notes">
+    {% for note in user.notes %}
+    <li class="list-group-item">
+        {{note.day_title}}
+        <button type="button" class="btn-close" aria-label="Close" onclick="deleteNote({{note.id}})"></button>
+
+    </li>
+    {% endfor %}
+</ul> -->
+
+<form method="POST">
+
+    <input type="text" class="form-control mt-4" id="day_title" name="day_title" placeholder="Set a 1 word title for your day">
+
+    <label for="weather" class="form-label">
+        What was the weather today?
+    </label>
+    <input type="text" id="weather" name="weather" class="form-control">
+
+    <label for="emotion" class="form-label">
+        Think of three emotions that would describe your day:
+    </label>
+    <textarea class="form-control" id="emotion" rows="3" name="emotion"></textarea>
+
+    <label for="person" class="form-label">
+        Favorite person today?
+    </label>
+    <input type="text" class="form-control" id="person" name="person">
+
+    <label for="activity" class="form-label">
+        Best thing you've done today?
+    </label>
+    <input type="text" class="form-control" id="activity" name="activity">
+
+    <label for="scene" class="form-label">
+        Memorable scene that happened today?
+    </label>
+    <textarea class="form-control" id="scene" name="scene"></textarea>
+
+    <label for="food" class="form-label">
+        Most memorable food you've eaten today?
+    </label>
+    <input type="text" class="form-control" id="food" name="food">
+
+    <p>Food Rating!</p>
+
+    <div class="form-check">
+        <input type="radio" value="divine" name="food-rate" id="food-rate" class="form-check-input">
+        <label for="food-rate" class="form-check-label">Divine</label>
+    </div>
+    <div class="form-check">
+        <input type="radio" value="mid" name="food-rate" id="food-rate" class="form-check-input">
+        <label for="food-rate" class="form-check-label">Not bad, but not good</label>
+    </div>
+    <div class="form-check">
+        <input type="radio" value="nightmare" name="food-rate" id="food-rate" class="form-check-input">
+        <label for="food-rate" class="form-check-label">Nightmare</label>
+    </div>
+    <br>
+    <label for="note" class="form-label">More thoughts?</label>
+    <textarea name="note" id="note" class="form-control" cols="30" rows="10"></textarea>
+    <br>
+    <div align="center">
+        <button class="btn btn-success" type="submit">SCRIBE!</button>
+    </div>
+</form>
+{% endblock %}

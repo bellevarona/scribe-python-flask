@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block title%}My Notes{% endblock %}
+
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/mynotes.css')}}">
+{% endblock %}
+
+{% block content %}
+<!-- <h1>This is the home page</h1> -->
+
+<!-- <h1 align="center" class="mt-2" id="set-day-title">My Notes</h1> -->
+<img src="../static/images/my-scribes-removebg.png" alt="my-scribes">
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Emotions</th>
+            <th scope="col">Date</th>
+            <th scope="col">Delete?</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for note in user.notes %}
+        <tr>
+            <td>
+                {{note.day_title}}
+            </td>
+            <td>
+                {{note.emotion}}
+            </td>
+            <td>
+                {{note.date}}
+            </td>
+            <td>
+                <button type="button" class="btn-close" aria-label="Close" onclick="deleteNote({{note.id}})"></button>
+            </td>
+        </tr>
+        {% endfor %}
+
+
+
+    </tbody>
+</table>
+
+<!-- <ul class="list-group list-group-flush" id="notes">
+    {% for note in user.notes %}
+    <li class="list-group-item">
+        {{note.day_title}}
+        {{note.date}}
+        <button type="button" class="btn-close" aria-label="Close" onclick="deleteNote({{note.id}})"></button>
+    </li>
+    {% endfor %}
+</ul> -->
+
+
+{% endblock %}
